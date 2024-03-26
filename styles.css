@@ -4,10 +4,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h1 {
-    color: #0056b3;
+h1, h2, h3 {
+    color: #c26815;
     text-align: center;
-    font-size: 40px;
 }
 
 .container {
@@ -15,9 +14,10 @@ h1 {
 }
 
 .apresentacao {
-    padding: 30px;
+    padding: 30px 4%;
     margin-bottom: 20px;
     line-height: 1.7;
+    font-size: 20px;
 }
 
 .convite-cadastro {
@@ -25,15 +25,15 @@ h1 {
     gap: 20px;
 }
 
-.video-todo {
+#img-cronometro {
     width: 800px;
-    height: 500px;
+    height: 0450px;
 }
 
 /* Estilos para o formulário */
 .cadastro {
     width: 400px;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
@@ -46,6 +46,7 @@ form {
 }
 
 label {
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -57,12 +58,12 @@ button[type="submit"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 13px;
-    padding: 2px;
+    padding: 4px;
 }
 
 button[type="submit"] {
     height: 30px;
-    background-color: #007bff;
+    background-color: #c26815;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -70,5 +71,9 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #57310e;
+}
+
+a {
+    color: #c26815;
 }
