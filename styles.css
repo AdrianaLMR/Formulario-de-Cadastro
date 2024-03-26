@@ -1,0 +1,74 @@
+body {
+    padding: 20px 4%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #0056b3;
+    text-align: center;
+    font-size: 40px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.apresentacao {
+    padding: 30px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.convite-cadastro {
+    display: flex;
+    gap: 20px;
+}
+
+.video-todo {
+    width: 800px;
+    height: 500px;
+}
+
+/* Estilos para o formulário */
+.cadastro {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+button[type="submit"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 2px;
+}
+
+button[type="submit"] {
+    height: 30px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 15px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
