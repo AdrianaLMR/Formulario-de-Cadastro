@@ -84,7 +84,7 @@ form.addEventListener("submit", (event) => {
 
 
     //se todos os campos estiverem preenchidos, envie o form
-    form.submit();
+    window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
 });
 
 
