@@ -50,29 +50,31 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-input[type="password"],
-button[type="submit"] {
+#signupName, #signupEmail, 
+#signupAge, 
+#signupPassword, 
+#confirmPassword {
+    background-color: #ccc;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 13px;
     padding: 4px;
 }
 
-button[type="submit"] {
+#button-submit  {
+    margin-top: 20px;
     height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
     background-color: #c26815;
     color: #fff;
-    cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 15px;
 }
 
-button[type="submit"]:hover {
+#button-submit:hover {
     background-color: #57310e;
-}
+} 
 
 a {
     color: #c26815;
