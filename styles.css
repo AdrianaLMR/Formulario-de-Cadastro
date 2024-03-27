@@ -27,7 +27,7 @@ h1, h2, h3 {
 
 #img-cronometro {
     width: 800px;
-    height: 0450px;
+    height: 0460px;
 }
 
 /* Estilos para o formulário */
@@ -54,6 +54,7 @@ label {
 #signupAge, 
 #signupPassword, 
 #confirmPassword {
+    margin-top: 5px;
     background-color: #ccc;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -62,10 +63,11 @@ label {
 }
 
 #button-submit  {
-    margin-top: 20px;
+    margin-top: 15px;
     height: 30px;
     font-size: 15px;
     border-radius: 5px;
+    border-color: #c26815;
     cursor: pointer;
     background-color: #c26815;
     color: #fff;
@@ -73,7 +75,7 @@ label {
 }
 
 #button-submit:hover {
-    background-color: #57310e;
+    background-color: #ff7d04;
 } 
 
 a {
