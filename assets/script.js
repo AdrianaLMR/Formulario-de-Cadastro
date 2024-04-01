@@ -6,9 +6,27 @@ const inputPassword = document.getElementById("signupPassword");
 const inputConfirmPassword = document.getElementById("confirmPassword");
 const submit = document.getElementById("button-submit");
 
+const mostrarSenhaCheckbox = document.getElementById("mostrarSenha");
+const mostrarConfirmSenhaCheckbox = document.getElementById("mostrarConfirmSenha");
+
 const uppercaseRegex = /[A-Z]/;
 const symbolRegex = /[!@#$%^&*(),.?":{}|<>]/;
 const numberRegex = /[0-9]/;
+
+// Adicione ouvintes de evento para os checkboxes
+mostrarSenhaCheckbox.addEventListener("change", toggleMostrarSenha);
+mostrarConfirmSenhaCheckbox.addEventListener("change", toggleMostrarConfirmSenha);
+
+// Função para mostrar ou ocultar a senha
+function toggleMostrarSenha() {
+    inputPassword.type = mostrarSenhaCheckbox.checked ? "text" : "password";
+}
+
+function toggleMostrarConfirmSenha() {
+    inputConfirmPassword.type = mostrarConfirmSenhaCheckbox.checked ? "text" : "password";
+}
+
+
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -36,6 +54,7 @@ function validarNome() {
 
 function validarEmail() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(inputEmail.value)) {
         alert("Insira um email válido");
         return false;
@@ -46,16 +65,16 @@ function validarEmail() {
 
 function validarIdade() {
     const input = inputIdade.value.trim();
-    
+
     // Verificar se a entrada contém apenas dígitos
     if (!/^\d+$/.test(input)) {
         alert("Digite uma idade válida (apenas números)");
         return false;
     }
-    
+
     // Converter a entrada em um número inteiro
     const idade = parseInt(input);
-    
+
     // Verificar se a entrada é um número válido dentro do intervalo permitido
     if (isNaN(idade) || idade < 1 || idade > 110) {
         alert("Digite uma idade válida");
@@ -68,6 +87,7 @@ function validarIdade() {
 function validarSenha() {
 
     const inputValue = inputPassword.value.trim();
+    inputPassword.type = 'password';
 
     if (!uppercaseRegex.test(inputValue) || !symbolRegex.test(inputValue) || !numberRegex.test(inputValue) || inputValue.length < 8) {
         let errorMessage = "A senha deve conter:";
@@ -84,11 +104,11 @@ function validarSenha() {
 }
 
 function confirmarSenha() {
-    // if (inputConfirmPassword.value === "") {
-    //     alert("Por favor, digite novamente sua senha para confirmar");
-    //     return false;
-    // }
-
+    inputPassword.type = 'password';
+    if (inputPassword.type === 'password') {
+        // Se a senha estiver oculta, não faz nada
+        return true; // Indica que a validação passou (mesmo que não tenha sido realizada)
+    }
     if (inputConfirmPassword.value !== inputPassword.value) {
         alert("As senhas não são iguais.");
         return false;
@@ -97,29 +117,38 @@ function confirmarSenha() {
     return true;
 }
 
-// Função para limpar todos os campos do formulário
-function limparCampos(event) {
-    inputName.value = "";
-    inputEmail.value = "";
-    inputIdade.value = "";
-    inputPassword.value = "";
-    inputConfirmPassword.value = "";
-}
+
+
+//Função para limpar todos os campos do formulário
+// function limparCampos(event) {
+//     inputName.value = "";
+//     inputEmail.value = "";
+//     inputIdade.value = "";
+//     inputPassword.value = "";
+//     inputConfirmPassword.value = "";
+// }
 
 // Adiciona um ouvinte de evento para quando a página é carregada
-window.addEventListener('load', (event) => {
-    // Chama a função para limpar os campos do formulário
-    limparCampos(event);
-});
- 
+// window.addEventListener('load', (event) => {
+//     // Chama a função para limpar os campos do formulário
+//     limparCampos(event);
+// });
+
+//-------------------------------------------------------------------------------------------------------------------------------------//
 
 //verificacao de password e confirmpassoword  type: password
+//verificar simbolos depois do dominio, esta aceutando como validado
 //buttos de visualizar senha
-//corrigir css de buttopn submit e form 
+//corrigir css de buttopn submit e form
 //guardar as informacoes de cadastro, para login posterior
 //opcao de visualizar senha
 // click enter direciona ao proximo campo input
 
 
-//erro idade, numerios <100> com simbolos sao aceitos como idade / - apenas simbolos em idade nao sao aceitos 
-//
+
+// usar o olho do html
+// so bote ter um submit no fomr
+//os valores dos inoput senha e confirmsenha devem ser do tipo password(digitado tipo opassword)
+//func buttons mostrar senhas  que convert o tipo do inputs das senhas
+//se o type do input for password converta para string, se for text converta para password
+

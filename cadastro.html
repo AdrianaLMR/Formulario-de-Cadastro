@@ -19,19 +19,24 @@
             <div class="cadastro" id="cadastro">
                 <form id="signupForm">
                     <label for="signupName">Nome:</label>
-                    <input id="signupName" name="signupName"><br><br>
+                    <input id="signupName" name="signupName"><br>
 
                     <label for="signupEmail">Email:</label>
-                    <input  id="signupEmail" name="signupEmail"><br><br>
+                    <input id="signupEmail" name="signupEmail"><br>
 
                     <label for="signupAge">Idade:</label>
-                    <input id="signupAge" name="signupAge"><br><br>
+                    <input id="signupAge" name="signupAge"><br>
 
                     <label for="signupPassword">Senha:</label>
-                    <input id="signupPassword" name="signupPassword"><br><br>
+                    <input id="signupPassword" name="signupPassword" type="password"><br>
+                    <input type="checkbox" id="mostrarSenha">
+                    <label for="mostrarSenha">Mostrar Senha</label>
 
                     <label for="confirmPassword">Confirmar Senha:</label>
-                    <input id="confirmPassword" name="confirmPassword">
+                    <input id="confirmPassword" name="confirmPassword" type="password"><br>
+                    <input type="checkbox" id="mostrarConfirmSenha">
+                    <label for="mostrarConfirmSenha">Mostrar Senha</label>
+
                     <button id="button-submit" value="Enviar">Cadastrar</button>
                 </form>
 
@@ -58,6 +63,7 @@
                 sua produtividade com o TempoMaster!
             </p>
         </div>
+
     </div>
     <script src="assets/script.js"></script>
 </body>
