@@ -1,145 +1,153 @@
-const form = document.getElementById("signupForm");
-const inputName = document.getElementById("signupName");
-const inputEmail = document.getElementById("signupEmail");
-const inputIdade = document.getElementById("signupAge");
-const inputPassword = document.getElementById("signupPassword");
-const inputConfirmPassword = document.getElementById("confirmPassword");
-const submit = document.getElementById("button-submit");
+// // // //verificar simbolos depois do dominio, esta aceutando como validado
+// // // // form submetido no click do enter- ele tem que ser submetido apenas depois de todas as validacoes.
+// // // //guardar as informacoes de cadastro, para login posterior
+// // // // click enter direciona ao proximo campo input
+// // // // so pode ter um submit no fomr
 
-const mostrarSenhaCheckbox = document.getElementById("mostrarSenha");
-const mostrarConfirmSenhaCheckbox = document.getElementById("mostrarConfirmSenha");
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("signupForm");
+    const inputName = document.getElementById("signupName");
+    const inputEmail = document.getElementById("signupEmail");
+    const inputIdade = document.getElementById("signupAge");
+    const inputPassword = document.getElementById("signupPassword");
+    const inputConfirmPassword = document.getElementById("confirmPassword");
 
-const uppercaseRegex = /[A-Z]/;
-const symbolRegex = /[!@#$%^&*(),.?":{}|<>]/;
-const numberRegex = /[0-9]/;
+    const mostrarSenhaCheckbox = document.getElementById("mostrarSenha");
+    const mostrarConfirmSenhaCheckbox = document.getElementById("mostrarConfirmSenha");
+    const uppercaseRegex = /[A-Z]/;
+    const symbolRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    const numberRegex = /[0-9]/;
 
-// Adicione ouvintes de evento para os checkboxes
-mostrarSenhaCheckbox.addEventListener("change", toggleMostrarSenha);
-mostrarConfirmSenhaCheckbox.addEventListener("change", toggleMostrarConfirmSenha);
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-// Função para mostrar ou ocultar a senha
-function toggleMostrarSenha() {
-    inputPassword.type = mostrarSenhaCheckbox.checked ? "text" : "password";
-}
+        if (!validarNome()) {
+            inputName.focus();
+            return;
+        }
+        if (!validarEmail()) {
+            inputEmail.focus();
+            return;
+        }
+        if (!validarIdade()) {
+            inputIdade.focus();
+            return;
+        }
+        if (!validarSenha()) {
+            inputPassword.focus();
+            return;
+        }
+        if (!confirmarSenha()) {
+            inputConfirmPassword.focus();
+            return;
+        }
 
-function toggleMostrarConfirmSenha() {
-    inputConfirmPassword.type = mostrarConfirmSenhaCheckbox.checked ? "text" : "password";
-}
+        // Se todas as validações passarem, o formulário pode ser enviado
+        // Você pode adicionar aqui o código para enviar o formulário para o servidor
 
+        const formularioValido = nomeValido && emailValido && idadeValida && senhaValida && confirmacaoSenhaValida;
 
+        if (formularioValido) {
+            window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
+        }
+    });
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
+    function validarNome() {
+        const nameRegex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s']+$/;
+        const nome = inputName.value.trim();
 
-    if (!validarNome()) return;
-    if (!validarEmail()) return;
-    if (!validarIdade()) return;
-    if (!validarSenha()) return;
-    if (!confirmarSenha()) return;
+        if (!nameRegex.test(nome)) {
+            alert("Por favor, digite um nome válido.");
+            inputName.focus();
+            return false;
+        }
 
-    // Se todos os campos estiverem preenchidos corretamente, envie o formulário
-    window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
+        return true;
+    }
+
+    function validarEmail() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const email = inputEmail.value.trim();
+
+        if (!emailRegex.test(email)) {
+            alert("Insira um email válido");
+            inputEmail.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function validarIdade() {
+        const input = inputIdade.value.trim();
+
+        if (!/^\d+$/.test(input)) {
+            alert("Digite uma idade válida (apenas números)");
+            inputIdade.focus();
+            return false;
+        }
+
+        const idade = parseInt(input);
+
+        if (isNaN(idade) || idade < 1 || idade > 110) {
+            alert("Digite uma idade válida");
+            inputIdade.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function validarSenha() {
+        const inputValue = inputPassword.value.trim();
+
+        if (!uppercaseRegex.test(inputValue) || !symbolRegex.test(inputValue) || !numberRegex.test(inputValue) || inputValue.length < 8) {
+            let errorMessage = "A senha deve conter:";
+            if (!uppercaseRegex.test(inputValue)) errorMessage += " uma letra maiúscula,";
+            if (!symbolRegex.test(inputValue)) errorMessage += " um símbolo,";
+            if (!numberRegex.test(inputValue)) errorMessage += " um número,";
+            if (inputValue.length < 8) errorMessage += " no mínimo 8 caracteres.";
+            else errorMessage = errorMessage.slice(0, -1) + ".";
+            alert(errorMessage);
+            inputPassword.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function confirmarSenha() {
+        const senha = inputPassword.value.trim();
+        const confirmacaoSenha = inputConfirmPassword.value.trim();
+
+        if (senha !== confirmacaoSenha) {
+            alert("As senhas não são iguais.");
+            inputConfirmPassword.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function toggleMostrarSenha() {
+        inputPassword.type = mostrarSenhaCheckbox.checked ? "text" : "password";
+    }
+
+    function toggleMostrarConfirmSenha() {
+        inputConfirmPassword.type = mostrarConfirmSenhaCheckbox.checked ? "text" : "password";
+    }
+
+    function limparCampos(event) {
+        inputName.value = "";
+        inputEmail.value = "";
+        inputIdade.value = "";
+        inputPassword.value = "";
+        inputConfirmPassword.value = "";
+    }
+
+    mostrarSenhaCheckbox.addEventListener("change", toggleMostrarSenha);
+    mostrarConfirmSenhaCheckbox.addEventListener("change", toggleMostrarConfirmSenha);
+    window.addEventListener('load', (event) => {
+        limparCampos(event);
+    });
 });
-
-function validarNome() {
-    const nameRegex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s']+$/;
-
-    if (!nameRegex.test(inputName.value.trim())) {
-        alert("Por favor, digite um nome válido.");
-        return false;
-    }
-
-    return true;
-}
-
-function validarEmail() {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(inputEmail.value)) {
-        alert("Insira um email válido");
-        return false;
-    }
-
-    return true;
-}
-
-function validarIdade() {
-    const input = inputIdade.value.trim();
-
-    // Verificar se a entrada contém apenas dígitos
-    if (!/^\d+$/.test(input)) {
-        alert("Digite uma idade válida (apenas números)");
-        return false;
-    }
-
-    // Converter a entrada em um número inteiro
-    const idade = parseInt(input);
-
-    // Verificar se a entrada é um número válido dentro do intervalo permitido
-    if (isNaN(idade) || idade < 1 || idade > 110) {
-        alert("Digite uma idade válida");
-        return false;
-    }
-
-    return true;
-}
-
-function validarSenha() {
-
-    const inputValue = inputPassword.value.trim();
-    inputPassword.type = 'password';
-
-    if (!uppercaseRegex.test(inputValue) || !symbolRegex.test(inputValue) || !numberRegex.test(inputValue) || inputValue.length < 8) {
-        let errorMessage = "A senha deve conter:";
-        if (!uppercaseRegex.test(inputValue)) errorMessage += " uma letra maiúscula,";
-        if (!symbolRegex.test(inputValue)) errorMessage += " um símbolo,";
-        if (!numberRegex.test(inputValue)) errorMessage += " um número,";
-        if (inputValue.length < 8) errorMessage += " no mínimo 8 caracteres.";
-        else errorMessage = errorMessage.slice(0, -1) + ".";
-        alert(errorMessage);
-        return false;
-    }
-
-    return true;
-}
-
-function confirmarSenha() {
-    inputPassword.type = 'password';
-    if (inputPassword.type === 'password') {
-        // Se a senha estiver oculta, não faz nada
-        return true; // Indica que a validação passou (mesmo que não tenha sido realizada)
-    }
-    if (inputConfirmPassword.value !== inputPassword.value) {
-        alert("As senhas não são iguais.");
-        return false;
-    }
-
-    return true;
-}
-
-
-
-// Função para limpar todos os campos do formulário
-function limparCampos(event) {
-    inputName.value = "";
-    inputEmail.value = "";
-    inputIdade.value = "";
-    inputPassword.value = "";
-    inputConfirmPassword.value = "";
-}
-
-// Adiciona um ouvinte de evento para quando a página é carregada
-window.addEventListener('load', (event) => {
-    // Chama a função para limpar os campos do formulário
-    limparCampos(event);
-});
-
-//-------------------------------------------------------------------------------------------------------------------------------------//
-
-
-//verificar simbolos depois do dominio, esta aceutando como validado
-// form submetido no click do enter- ele tem que ser submetido apenas depois de todas as validacoes.
-//guardar as informacoes de cadastro, para login posterior
-// click enter direciona ao proximo campo input
-// so pode ter um submit no fomr
-
