@@ -4,7 +4,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: #c26815;
     text-align: center;
 }
@@ -33,7 +35,7 @@ h1, h2, h3 {
 /* Estilos para o formulário */
 .cadastro {
     width: 400px;
-    padding: 15px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
@@ -48,21 +50,35 @@ form {
 label {
     font-size: 15px;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
-#signupName, #signupEmail, 
-#signupAge, 
-#signupPassword, 
+#signupName,
+#signupEmail,
+#signupAge,
+#signupPassword,
 #confirmPassword {
     margin-top: 5px;
     background-color: #ccc;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 13px;
-    padding: 4px;
+    padding: 5px;
 }
 
-#button-submit  {
+label[for="mostrarSenha"],
+label[for="mostrarConfirmSenha"] {
+    font-size: 16px;
+    color: rgb(165, 105, 27);
+}
+
+input[type="checkbox"] {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+#button-submit {
     margin-top: 15px;
     height: 30px;
     font-size: 15px;
@@ -76,7 +92,7 @@ label {
 
 #button-submit:hover {
     background-color: #ff7d04;
-} 
+}
 
 a {
     color: #c26815;
