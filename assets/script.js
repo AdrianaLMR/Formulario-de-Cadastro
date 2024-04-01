@@ -119,36 +119,27 @@ function confirmarSenha() {
 
 
 
-//Função para limpar todos os campos do formulário
-// function limparCampos(event) {
-//     inputName.value = "";
-//     inputEmail.value = "";
-//     inputIdade.value = "";
-//     inputPassword.value = "";
-//     inputConfirmPassword.value = "";
-// }
+// Função para limpar todos os campos do formulário
+function limparCampos(event) {
+    inputName.value = "";
+    inputEmail.value = "";
+    inputIdade.value = "";
+    inputPassword.value = "";
+    inputConfirmPassword.value = "";
+}
 
 // Adiciona um ouvinte de evento para quando a página é carregada
-// window.addEventListener('load', (event) => {
-//     // Chama a função para limpar os campos do formulário
-//     limparCampos(event);
-// });
+window.addEventListener('load', (event) => {
+    // Chama a função para limpar os campos do formulário
+    limparCampos(event);
+});
 
 //-------------------------------------------------------------------------------------------------------------------------------------//
 
-//verificacao de password e confirmpassoword  type: password
+
 //verificar simbolos depois do dominio, esta aceutando como validado
-//buttos de visualizar senha
-//corrigir css de buttopn submit e form
+
 //guardar as informacoes de cadastro, para login posterior
-//opcao de visualizar senha
 // click enter direciona ao proximo campo input
-
-
-
-// usar o olho do html
-// so bote ter um submit no fomr
-//os valores dos inoput senha e confirmsenha devem ser do tipo password(digitado tipo opassword)
-//func buttons mostrar senhas  que convert o tipo do inputs das senhas
-//se o type do input for password converta para string, se for text converta para password
+// so pode ter um submit no fomr
 
