@@ -138,7 +138,7 @@ window.addEventListener('load', (event) => {
 
 
 //verificar simbolos depois do dominio, esta aceutando como validado
-
+// form submetido no click do enter- ele tem que ser submetido apenas depois de todas as validacoes.
 //guardar as informacoes de cadastro, para login posterior
 // click enter direciona ao proximo campo input
 // so pode ter um submit no fomr
