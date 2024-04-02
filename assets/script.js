@@ -45,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const formularioValido = validarNome() && validarEmail() && validarIdade() && validarSenha() && confirmarSenha();
 
         if (formularioValido) {
-            form.submit();
-            // window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
+            window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
         }
     });
 
@@ -149,8 +148,3 @@ document.addEventListener("DOMContentLoaded", function () {
         limparCampos(event);
     });
 });
-
-// Progresso:
-// As validações estão funcionando corretamente
-// O form não é submetido caso form preenchido incorretamente
-// Falta submeter o form para a pagina de uso do produto(projeto)
