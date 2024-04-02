@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputIdade = document.getElementById("signupAge");
     const inputPassword = document.getElementById("signupPassword");
     const inputConfirmPassword = document.getElementById("confirmPassword");
-
+    const buttonSubmit = document.getElementById("button-submit");
     const mostrarSenhaCheckbox = document.getElementById("mostrarSenha");
     const mostrarConfirmSenhaCheckbox = document.getElementById("mostrarConfirmSenha");
     const uppercaseRegex = /[A-Z]/;
@@ -42,13 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Se todas as validações passarem, o formulário pode ser enviado
-        // Você pode adicionar aqui o código para enviar o formulário para o servidor
-
-        const formularioValido = nomeValido && emailValido && idadeValida && senhaValida && confirmacaoSenhaValida;
+        const formularioValido = validarNome() && validarEmail() && validarIdade() && validarSenha() && confirmarSenha();
 
         if (formularioValido) {
-            window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
+            form.submit();
+            // window.location.href = "https://adrianalmr.github.io/Projetos_Cronometro_Temporizador/";
         }
     });
 
@@ -151,3 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
         limparCampos(event);
     });
 });
+
+// Progresso:
+// As validações estão funcionando corretamente
+// O form não é submetido caso form preenchido incorretamente
+// Falta submeter o form para a pagina de uso do produto(projeto)
