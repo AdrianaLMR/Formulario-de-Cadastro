@@ -4,7 +4,10 @@
     font-family: Arial, sans-serif;
 }
 
-h1,
+h1 {
+    color: #c26815;
+    margin-left: 10px;
+}
 h2,
 h3 {
     color: #c26815;
